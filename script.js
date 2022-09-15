@@ -9,24 +9,26 @@ const retrieveEntries =() => {
     }
     return entries;
 }
-
-const validateage = (x) => {
-    x.preventDefault();
-    element = document.getElementById("dob");
-    console.log(element);
-    let bornday = new Date(element.value);
-    let today = new Date();
-
-    let age = today.getFullYear() - bornday.getFullYear();
-
-    if(age < 18 || age > 55){
-        element.setCustomValidity("your age must be in between 18 - 55");
-        element.reportValidity();
-    }else{
-        element.setCustomValidity('');
-        displayentries();
-}
+window.onload = function() {
+    var date = new Date();
+    var dd = date.getDate();
+    var mm = date.getMonth() + 1;
+    var yyyy = date.getFullYear();
+    if (dd < 10) {
+      dd = "0" + dd;
     }
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+    minYear = yyyy - 55; 
+    maxYear = yyyy - 18; 
+
+    var min = minYear + "-" + mm + "-" + dd;
+    var max = maxYear + "-" + mm + "-" + dd;
+
+    document.getElementById("dob").setAttribute("min", min);
+    document.getElementById("dob").setAttribute("max", max);
+  };
 
 let Entries = retrieveEntries();
 
@@ -69,9 +71,8 @@ const saveuserform = event => {
 
     Entries.push(entry);
     localStorage.setItem("user-entries", JSON.stringify(Entries));
-    
+    displayentries();
 }
 
 userform.addEventListener("submit", saveuserform);
-userform.addEventListener("submit", validateage);
 displayentries();
