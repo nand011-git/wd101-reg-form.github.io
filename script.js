@@ -47,7 +47,7 @@ const displayentries = () =>{
 
     }).join("\n");
 
-    const table = `<table align='center' cellpadding='10'><tr><th>Name</th><th>Email</th><th>Password</th><th>Date of Birth</th><th>Accept Terms and Conditions</th></tr>${tableEntries}</table>`;
+    const table = `<table align='center' cellpadding='10'><tr><th>Name</th><th>Email</th><th>Password</th><th>Dob</th><th>Accepted terms?</th></tr>${tableEntries}</table>`;
 
     let details = document.getElementById("user-entries");
     details.innerHTML = table;
