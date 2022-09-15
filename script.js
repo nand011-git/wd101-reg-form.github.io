@@ -1,3 +1,14 @@
+let userform = document.getElementById("User-Form")
+
+const retrieveEntries =() => {
+    let entries = localStorage.getItem("user-entries");
+    if(entries){
+        entries = JSON.parse(entries);
+    }else{
+        entries=[];
+    }
+    return entries;
+}
 
 const validateage = (x) => {
     x.preventDefault();
@@ -16,19 +27,6 @@ const validateage = (x) => {
         displayentries();
 }
     }
-
-
-let userform = document.getElementById("User-Form")
-
-const retrieveEntries =() => {
-    let entries = localStorage.getItem("user-entries");
-    if(entries){
-        entries = JSON.parse(entries);
-    }else{
-        entries=[];
-    }
-    return entries;
-}
 
 let Entries = retrieveEntries();
 
